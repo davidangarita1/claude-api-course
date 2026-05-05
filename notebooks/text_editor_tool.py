@@ -6,7 +6,7 @@ app = marimo.App()
 
 @app.cell
 def _():
-    # Load env variables and create client
+    # Cargar variables de entorno y crear cliente
     from dotenv import load_dotenv
     from anthropic import Anthropic
 
@@ -19,7 +19,7 @@ def _():
 
 @app.cell
 def _(client, model):
-    # Helper functions
+    # Funciones auxiliares
     from anthropic.types import Message
 
 
@@ -66,7 +66,7 @@ def _(client, model):
 
 @app.cell
 def _():
-    # Implementation of the TextEditorTool
+    # Implementación de TextEditorTool
     import os
     import shutil
     from typing import Optional, List
@@ -192,7 +192,7 @@ def _():
                 # Create backup before modifying
                 self._backup_file(abs_path)
 
-                # Perform the replacement
+                # Realizar el reemplazo
                 new_content = content.replace(old_str, new_str)
 
                 with open(abs_path, "w", encoding="utf-8") as f:
@@ -211,16 +211,16 @@ def _():
             try:
                 abs_path = self._validate_path(file_path)
 
-                # Check if file already exists
+                # Verificar si el archivo ya existe
                 if os.path.exists(abs_path):
                     raise FileExistsError(
                         "File already exists. Use str_replace to modify it."
                     )
 
-                # Create parent directories if they don't exist
+                # Crear directorios padre si no existen
                 os.makedirs(os.path.dirname(abs_path), exist_ok=True)
 
-                # Create the file
+                # Crear el archivo
                 with open(abs_path, "w", encoding="utf-8") as f:
                     f.write(file_text)
 
@@ -246,7 +246,7 @@ def _():
                 with open(abs_path, "r", encoding="utf-8") as f:
                     lines = f.readlines()
 
-                # Handle line endings
+                # Manejar fines de línea
                 if lines and not lines[-1].endswith("\n"):
                     new_str = "\n" + new_str
 
@@ -296,7 +296,7 @@ def _():
 
 @app.cell
 def _(TextEditorTool):
-    # Process Tool Call Requests
+    # Procesar solicitudes de llamadas a herramientas
     import json
 
     text_editor_tool = TextEditorTool()
@@ -358,7 +358,7 @@ def _(TextEditorTool):
 
 
 @app.function
-# Make the text edit schema based on the model version being used
+# Definir el esquema del editor de texto basado en la versión del modelo
 def get_text_edit_schema(model):
     return {
         "type": "text_editor_20250728",
@@ -375,7 +375,7 @@ def _(
     run_tools,
     text_from_message,
 ):
-    # Run the conversation in a loop until the model doesn't ask for a tool use
+    # Ejecutar la conversación en un bucle hasta que el modelo no solicite uso de herramientas
     def run_conversation(messages):
         while True:
             response = chat(
