@@ -6,7 +6,7 @@ app = marimo.App()
 
 @app.cell
 def _():
-    # Client Setup
+    # Configuración del cliente
     from dotenv import load_dotenv
     import voyageai
 
@@ -18,7 +18,7 @@ def _():
 
 @app.cell
 def _():
-    # Chunk by section
+    # Dividir por sección
     import re
 
 
@@ -31,7 +31,7 @@ def _():
 
 @app.cell
 def _(client):
-    # Embedding Generation
+    # Generación de embeddings
     def generate_embedding(chunks, model="voyage-3-large", input_type="query"):
         is_list = isinstance(chunks, list)
         input = chunks if is_list else [chunks]
@@ -43,7 +43,7 @@ def _(client):
 
 @app.cell
 def _():
-    # VectorIndex implementation
+    # Implementación de VectorIndex
     import math
     from typing import Optional, Any, List, Dict, Tuple
 
@@ -201,20 +201,20 @@ def _():
 
 @app.cell
 def _():
-    # 1. Chunk the text by section
+    # 1. Dividir el texto por sección
     return
 
 
 @app.cell
 def _():
-    # 2. Generate embeddings for each chunk
+    # 2. Generar embeddings para cada fragmento
     return
 
 
 @app.cell
 def _(VectorIndex, chunks):
-    # 3. Create a vector store and add each embedding to it
-    # Note: converted to a bulk operation to avoid rate limiting errors from VoyageAI
+    # 3. Crear un almacén de vectores y añadir cada embedding
+    # Nota: convertido a operación masiva para evitar errores de límite de tasa de VoyageAI
     store = VectorIndex()
     store.add_documents([{"content": chunk} for chunk in chunks])
     return
@@ -222,13 +222,13 @@ def _(VectorIndex, chunks):
 
 @app.cell
 def _():
-    # 4. Some time later, a user will ask a question. Generate an embedding for it
+    # 4. Algún tiempo después, un usuario hará una pregunta. Generar un embedding para la consulta
     return
 
 
 @app.cell
 def _():
-    # 5. Search the store with the embedding, find the 2 most relevant chunks
+    # 5. Buscar en el almacén con el embedding, encontrar los 2 fragmentos más relevantes
     return
 
 

@@ -6,14 +6,14 @@ app = marimo.App()
 
 @app.cell
 def _():
-    # Install VoyageAI lib
-    # '%pip install voyageai' command supported automatically in marimo
+    # Instalar la librería VoyageAI
+    # El comando '%pip install voyageai' es soportado automáticamente en marimo
     return
 
 
 @app.cell
 def _():
-    # Client Setup
+    # Configuración del cliente
     from dotenv import load_dotenv
     import voyageai
 
@@ -25,7 +25,7 @@ def _():
 
 @app.cell
 def _():
-    # Chunk by section
+    # Dividir por sección
     import re
 
 
@@ -38,7 +38,7 @@ def _():
 
 @app.cell
 def _(client):
-    # Embedding Generation
+    # Generación de embeddings
     def generate_embedding(text, model="voyage-3-large", input_type="query"):
         result = client.embed([text], model=model, input_type=input_type)
 

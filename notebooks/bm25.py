@@ -6,7 +6,7 @@ app = marimo.App()
 
 @app.cell
 def _():
-    # Chunk by section
+    # Dividir por sección
     import re
 
 
@@ -19,7 +19,7 @@ def _():
 
 @app.cell
 def _(re):
-    # BM25Index implementation
+    # Implementación de BM25Index
     import math
     from collections import Counter
     from typing import Callable, Optional, Any, List, Dict, Tuple
@@ -178,19 +178,19 @@ def _():
 
 @app.cell
 def _():
-    # 1. Chunk the text by section
+    # 1. Dividir el texto por sección
     return
 
 
 @app.cell
 def _():
-    # 2. Create a BM25 store and add each chunk to it
+    # 2. Crear un almacén BM25 y añadir cada fragmento
     return
 
 
 @app.cell
 def _():
-    # 3. Search the store
+    # 3. Buscar en el almacén
     return
 
 

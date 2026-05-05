@@ -5,7 +5,7 @@ app = marimo.App()
 
 
 @app.function
-# Chunk by a set number of charactesr
+# Dividir por un número fijo de caracteres
 def chunk_by_char(text, chunk_size=150, chunk_overlap=20):
     chunks = []
     start_idx = 0
@@ -25,7 +25,7 @@ def chunk_by_char(text, chunk_size=150, chunk_overlap=20):
 
 @app.cell
 def _():
-    # Chunk by sentence
+    # Dividir por oración
     import re
 
 
@@ -53,7 +53,7 @@ def _():
 
 @app.cell
 def _(re):
-    # Chunk by section
+    # Dividir por sección
     def chunk_by_section(document_text):
         pattern = r"\n## "
         return re.split(pattern, document_text)

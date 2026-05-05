@@ -6,7 +6,7 @@ app = marimo.App()
 
 @app.cell
 def _():
-    # Client Setup
+    # Configuración del cliente
     from dotenv import load_dotenv
     import voyageai
 
@@ -18,7 +18,7 @@ def _():
 
 @app.cell
 def _():
-    # Chunk by section
+    # Dividir por sección
     import re
 
 
@@ -31,7 +31,7 @@ def _():
 
 @app.cell
 def _(client):
-    # Embedding Generation
+    # Generación de embeddings
     def generate_embedding(chunks, model="voyage-3-large", input_type="query"):
         is_list = isinstance(chunks, list)
         input = chunks if is_list else [chunks]
@@ -43,7 +43,7 @@ def _(client):
 
 @app.cell
 def _():
-    # VectorIndex implementation
+    # Implementación de VectorIndex
     import math
     from typing import Optional, Any, List, Dict, Tuple
 
@@ -225,7 +225,7 @@ def _():
 
 @app.cell
 def _(Any, Dict, List, Optional, Tuple, math, re):
-    # BM25 implementation
+    # Implementación de BM25
     from collections import Counter
     from typing import Callable
 
@@ -360,7 +360,7 @@ def _(Any, Dict, List, Optional, Tuple, math, re):
 
 @app.cell
 def _(Any, Dict, List, Tuple):
-    # Retriever implementation
+    # Implementación del Retriever
     from typing import Protocol
 
     class SearchIndex(Protocol):
@@ -417,7 +417,7 @@ def _(Any, Dict, List, Tuple):
 
 @app.cell
 def _(chunk_by_section):
-    # Chunk source text by section
+    # Dividir texto fuente por sección
     with open("./report.md", "r") as f:
         text = f.read()
 
@@ -427,7 +427,7 @@ def _(chunk_by_section):
 
 @app.cell
 def _(BM25Index, Retriever, VectorIndex, generate_embedding):
-    # Create a vector index, a bm25 index, then use them to create a Retriever
+    # Crear un índice vectorial, un índice BM25, luego usarlos para crear un Retriever
     vector_index = VectorIndex(embedding_fn=generate_embedding)
     bm25_index = BM25Index()
 
@@ -437,8 +437,8 @@ def _(BM25Index, Retriever, VectorIndex, generate_embedding):
 
 @app.cell
 def _(chunks, retriever):
-    # Add all chunks to the retriever, which internally passes them along to both indexes
-    # Note: converted to a bulk operation to avoid rate limiting errors from VoyageAI
+    # Añadir todos los fragmentos al retriever, que internamente los pasa a ambos índices
+    # Nota: convertido a operación masiva para evitar errores de límite de tasa de VoyageAI
     retriever.add_documents([{"content": chunk} for chunk in chunks])
     return
 
