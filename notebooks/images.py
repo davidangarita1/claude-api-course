@@ -6,7 +6,7 @@ app = marimo.App()
 
 @app.cell
 def _():
-    # Load env variables and create client
+    # Cargar variables de entorno y crear cliente
     import base64
     from dotenv import load_dotenv
     from anthropic import Anthropic
@@ -20,7 +20,7 @@ def _():
 
 @app.cell
 def _(client, model):
-    # Helper functions
+    # Funciones auxiliares
     from anthropic.types import Message
 
 
@@ -81,7 +81,7 @@ def _(client, model):
 
 @app.cell
 def _():
-    # Fire risk assessment prompt
+    # Prompt de evaluación de riesgo de incendio
     prompt = """
     Analyze the attached satellite image of a property with these specific steps:
 
@@ -118,7 +118,7 @@ def _():
 
 @app.cell
 def _():
-    # TODO: Read image data, feed into Claude
+    # TODO: Leer datos de imagen, alimentar a Claude
     return
 
 
