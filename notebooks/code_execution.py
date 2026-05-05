@@ -6,7 +6,7 @@ app = marimo.App()
 
 @app.cell
 def _():
-    # Load env variables and create client
+    # Cargar variables de entorno y crear cliente
     from dotenv import load_dotenv
     from anthropic import Anthropic
     from pathlib import Path
@@ -24,7 +24,7 @@ def _():
 
 @app.cell
 def _(Path, client, model):
-    # Helper functions
+    # Funciones auxiliares
     from anthropic.types import Message
 
 

@@ -6,7 +6,7 @@ app = marimo.App()
 
 @app.cell
 def _():
-    # Load env variables and create client
+    # Cargar variables de entorno y crear cliente
     from dotenv import load_dotenv
     from anthropic import Anthropic
 
@@ -19,7 +19,7 @@ def _():
 
 @app.cell
 def _(client, model):
-    # Helper functions
+    # Funciones auxiliares
     from anthropic.types import Message
 
 
@@ -82,7 +82,7 @@ def _(client, model):
 
 @app.cell
 def _():
-    # Prompt with ~6k Tokens
+    # Prompt con aproximadamente 6k Tokens
     code_prompt = """
     # Javascript Code Generator for Document Analysis Flow
 
@@ -640,7 +640,7 @@ def _():
 
 @app.cell
 def _():
-    # Tool Schemas, ~1.7k tokens
+    # Esquemas de herramientas, aproximadamente 1.7k tokens
     from anthropic.types import ToolParam
 
     add_duration_to_datetime_schema = ToolParam(
