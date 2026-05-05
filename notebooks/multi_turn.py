@@ -60,19 +60,19 @@ def _(mo):
 
 @app.cell
 def _(add_assistant_message, add_user_message, chat, messages):
-    # Add the initial user question
+    # Agregar la pregunta inicial del usuario
     add_user_message(messages, "Define quantum computing in one sentence")
 
-    # Get Claude's response
+    # Obtener la respuesta de Claude
     answer = chat(messages)
 
-    # Add Claude's response to the conversation history
+    # Agregar la respuesta de Claude al historial de conversación
     add_assistant_message(messages, answer)
 
-    # Add a follow-up question
+    # Agregar una pregunta de seguimiento
     add_user_message(messages, "Write another sentence")
 
-    # Get the follow-up response with full context
+    # Obtener la respuesta de seguimiento con el contexto completo
     final_answer = chat(messages)
     return
 

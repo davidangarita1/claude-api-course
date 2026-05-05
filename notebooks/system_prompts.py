@@ -54,10 +54,10 @@ def _(client, model):
 
 @app.cell
 def _(chat, messages):
-    # Without system prompt
+    # Sin prompt del sistema
     answer = chat(messages)
 
-    # With system prompt
+    # Con prompt del sistema
     system = """
     You are a patient math tutor.
     Do not directly answer a student's questions.

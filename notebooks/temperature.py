@@ -49,10 +49,10 @@ def _(client, model):
 
 @app.cell
 def _(chat, messages):
-    # Low temperature - more predictable
+    # Temperatura baja - más predecible
     answer = chat(messages, temperature=0.0)
 
-    # High temperature - more creative  
+    # Temperatura alta - más creativo  
     answer = chat(messages, temperature=1.0)
     return
 

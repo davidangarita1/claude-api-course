@@ -38,10 +38,10 @@ def _(client, messages, model):
         messages=messages
     ) as stream:
         for text in stream.text_stream:
-            # Send each chunk to your client
+            # Enviar cada fragmento a tu cliente
             pass
     
-        # Get the complete message for database storage
+        # Obtener el mensaje completo para almacenar en base de datos
         final_message = stream.get_final_message()
     return
 
