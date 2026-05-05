@@ -7,7 +7,7 @@ app = marimo.App()
 @app.cell
 def _():
     import marimo as mo
-    # Load env variables and create client
+    # Cargar variables de entorno y crear cliente
     from dotenv import load_dotenv
     from anthropic import Anthropic
 
@@ -20,7 +20,7 @@ def _():
 
 @app.cell
 def _(client, model):
-    # Helper functions
+    # Funciones auxiliares
     def add_user_message(messages, text):
         user_message = {"role": "user", "content": text}
         messages.append(user_message)
@@ -82,7 +82,7 @@ def _():
 @app.cell
 def _(add_user_message, chat):
     def run_prompt(test_case):
-        """Merges the prompt and test case input, then returns the result"""
+        """Combina el prompt y la entrada del caso de prueba, luego devuelve el resultado"""
         prompt = f"""
     Please solve the following task:
 
@@ -100,7 +100,7 @@ def _(add_user_message, chat):
 @app.cell
 def _(run_prompt):
     def run_test_case(test_case):
-        """Calls run_prompt, then grades the result"""
+        """Llama a run_prompt, luego califica el resultado"""
         output = run_prompt(test_case)
     
         # TODO - Grading
@@ -118,7 +118,7 @@ def _(run_prompt):
 @app.cell
 def _(run_test_case):
     def run_eval(dataset):
-        """Loads the dataset and calls run_test_case with each case"""
+        """Carga el dataset y llama a run_test_case con cada caso"""
         results = []
     
         for test_case in dataset:

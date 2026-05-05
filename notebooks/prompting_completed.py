@@ -6,7 +6,7 @@ app = marimo.App()
 
 @app.cell
 def _():
-    # Imports
+    # Importaciones
     import json
     import concurrent.futures
     import re
@@ -20,7 +20,7 @@ def _():
 
 @app.cell
 def _(Anthropic, load_dotenv):
-    # Client Initialization and helper functions
+    # Inicialización del cliente y funciones auxiliares
 
     load_dotenv()
 
@@ -58,7 +58,7 @@ def _(Anthropic, load_dotenv):
 
 @app.cell
 def _(mean):
-    # Report Builder
+    # Generador de reportes
     def generate_prompt_evaluation_report(evaluation_results):
         total_tests = len(evaluation_results)
         scores = [result["score"] for result in evaluation_results]
@@ -263,7 +263,7 @@ def _(
     mean,
     re,
 ):
-    # PromptEvaluator Implementation
+    # Implementación de PromptEvaluator
     class PromptEvaluator:
         def __init__(self, max_concurrent_tasks=3):
             self.max_concurrent_tasks = max_concurrent_tasks
@@ -673,8 +673,8 @@ def _(
 
 @app.cell
 def _(PromptEvaluator):
-    # Create an instance of PromptEvaluator
-    # Increase `max_concurrent_tasks` for greater concurrency, but beware of rate limit errors!
+    # Crear una instancia de PromptEvaluator
+    # Aumentar `max_concurrent_tasks` para mayor concurrencia, ¡cuidado con errores de límite de tasa!
     evaluator = PromptEvaluator(max_concurrent_tasks=1)
     return (evaluator,)
 
@@ -701,8 +701,8 @@ def _(evaluator):
 
 @app.cell
 def _(add_user_message, chat):
-    # Define and run the prompt you want to evaluate, returning the raw model output
-    # This function is executed once for each test case
+    # Definir y ejecutar el prompt que quieres evaluar, devolviendo la salida cruda del modelo
+    # Esta función se ejecuta una vez para cada caso de prueba
     def run_prompt(prompt_inputs):
         prompt = f"""
         Generate a one-day meal plan for an athlete that meets their dietary restrictions.

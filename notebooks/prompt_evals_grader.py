@@ -6,7 +6,7 @@ app = marimo.App()
 
 @app.cell
 def _():
-    # Load env variables and create client
+    # Cargar variables de entorno y crear cliente
     from dotenv import load_dotenv
     from anthropic import Anthropic
 
@@ -19,7 +19,7 @@ def _():
 
 @app.cell
 def _(client, model):
-    # Helper functions
+    # Funciones auxiliares
     def add_user_message(messages, text):
         user_message = {"role": "user", "content": text}
         messages.append(user_message)
@@ -50,7 +50,7 @@ def _(client, model):
 
 @app.cell
 def _(add_assistant_message, add_user_message, chat):
-    # Function to generate a new dataset
+    # Función para generar un nuevo dataset
     import json
 
 
@@ -88,7 +88,7 @@ def _(add_assistant_message, add_user_message, chat):
 
 @app.cell
 def _(generate_dataset, json):
-    # Generate the dataset and write it to 'dataset.json'
+    # Generar el dataset y escribirlo en 'dataset.json'
     _dataset = generate_dataset()
     with open('dataset.json', 'w') as _f:
         json.dump(_dataset, _f, indent=2)
@@ -97,7 +97,7 @@ def _(generate_dataset, json):
 
 @app.cell
 def _(add_assistant_message, add_user_message, chat, json):
-    # Function to grade a test case + output using a model
+    # Función para calificar un caso de prueba + salida usando un modelo
     def grade_by_model(test_case, output):
         eval_prompt = f"""
     You are an expert AWS code reviewer. Your task is to evaluate the following AI-generated solution.
@@ -140,7 +140,7 @@ def _(add_assistant_message, add_user_message, chat, json):
 
 @app.cell
 def _(add_user_message, chat):
-    # Passes a test case into Claude
+    # Pasa un caso de prueba a Claude
     def run_prompt(test_case):
         prompt = f"""
     Please solve the following task:
@@ -158,9 +158,9 @@ def _(add_user_message, chat):
 
 @app.cell
 def _(grade_by_model, run_prompt):
-    # Function to execute a single test case and grade the output
+    # Función para ejecutar un solo caso de prueba y calificar la salida
     def run_test_case(test_case):
-        """Calls run_prompt, then grades the result"""
+        """Llama a run_prompt, luego califica el resultado"""
         output = run_prompt(test_case)
 
         model_grade = grade_by_model(test_case, output)
@@ -182,7 +182,7 @@ def _(run_test_case):
     from statistics import mean
 
     def run_eval(dataset):
-        """Loads the dataset and calls run_test_case with each case"""
+        """Carga el dataset y llama a run_test_case con cada caso"""
         results = []
         for test_case in _dataset:
             result = run_test_case(test_case)
