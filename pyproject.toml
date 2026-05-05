@@ -1,0 +1,12 @@
+[project]
+name = "claude-api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "anthropic>=0.97.0",
+    "marimo>=0.23.4",
+    "python-dotenv>=1.2.2",
+    "voyageai>=0.3.7",
+]
