@@ -6,7 +6,7 @@ app = marimo.App()
 
 @app.cell
 def _():
-    # Load env variables and create client
+    # Cargar variables de entorno y crear cliente
     from dotenv import load_dotenv
     from anthropic import Anthropic
 
@@ -20,7 +20,7 @@ def _():
 
 @app.cell
 def _(client, model):
-    # Helper functions
+    # Funciones auxiliares
 
 
     def add_user_message(messages, message):
@@ -62,7 +62,7 @@ def _(client, model):
                 "content": content_list,
             }
         else:
-            # String messages need to be wrapped in a list with text block
+            # Los mensajes de texto necesitan estar envueltos en una lista con bloque de texto
             assistant_message = {
                 "role": "assistant",
                 "content": [{"type": "text", "text": message}],
@@ -110,7 +110,7 @@ def _(client, model):
 
 @app.cell
 def _():
-    # Tool definition
+    # Definición de herramientas
     from anthropic.types import ToolParam
 
     save_article_schema = ToolParam(
@@ -183,7 +183,7 @@ def _():
 
 @app.cell
 def _(save_article):
-    # Tool Running
+    # Ejecución de herramientas
     import json
 
 
@@ -222,7 +222,7 @@ def _(save_article):
 
 @app.cell
 def _(add_assistant_message, add_user_message, chat_stream, run_tools):
-    # Run conversation
+    # Ejecutar conversación
     def run_conversation(messages, tools=[], tool_choice=None, fine_grained=False):
         while True:
             with chat_stream(

@@ -6,7 +6,7 @@ app = marimo.App()
 
 @app.cell
 def _():
-    # Load env variables and create client
+    # Cargar variables de entorno y crear cliente
     from dotenv import load_dotenv
     from anthropic import Anthropic
 
@@ -19,7 +19,7 @@ def _():
 
 @app.cell
 def _(client, model):
-    # Helper functions
+    # Funciones auxiliares
     from anthropic.types import Message
 
 
@@ -66,7 +66,7 @@ def _(client, model):
 
 @app.cell
 def _():
-    # Tools and Schemas
+    # Herramientas y esquemas
 
     from datetime import datetime, timedelta
 
@@ -204,7 +204,7 @@ def _():
 
 @app.cell
 def _(datetime):
-    # get_current_datetime tool function
+    # Función de herramienta get_current_datetime
     from anthropic.types import ToolParam
 
 

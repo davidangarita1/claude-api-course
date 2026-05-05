@@ -6,7 +6,7 @@ app = marimo.App()
 
 @app.cell
 def _():
-    # Load env variables and create client
+    # Cargar variables de entorno y crear cliente
     from dotenv import load_dotenv
     from anthropic import Anthropic
 
@@ -19,7 +19,7 @@ def _():
 
 @app.cell
 def _(client, model):
-    # Helper functions
+    # Funciones auxiliares
     def add_user_message(messages, text):
         user_message = {"role": "user", "content": text}
         messages.append(user_message)
@@ -50,7 +50,7 @@ def _(client, model):
 
 @app.cell
 def _():
-    # Tools and Schemas
+    # Herramientas y esquemas
 
     from datetime import datetime, timedelta
 
