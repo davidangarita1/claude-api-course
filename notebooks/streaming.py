@@ -14,7 +14,7 @@ def _():
     from anthropic import Anthropic
 
     client = Anthropic()
-    model = "claude-sonnet-4-0"
+    model = "claude-sonnet-4-6"
 
     messages = []
     return client, messages, mo, model
