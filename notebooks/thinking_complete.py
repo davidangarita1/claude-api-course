@@ -66,10 +66,14 @@ def _(client, model):
             }
 
         if tools:
-            params["tools"] = tools
+            cached_tools = list(tools)
+            cached_tools[-1] = {**cached_tools[-1], "cache_control": {"type": "ephemeral"}}
+            params["tools"] = cached_tools
 
         if system:
-            params["system"] = system
+            params["system"] = [
+                {"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}
+            ]
 
         message = client.messages.create(**params)
         return message
